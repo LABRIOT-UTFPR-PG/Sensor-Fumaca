@@ -2,8 +2,9 @@
 
 #include "MeuServo.h"
 #include "MeuADC.h"
+#include "DelayPersonalizado.h"
 
-#define PinSensor 0 // A0 = canal 0 do ADC
+#define PinSensor 0 
 #define PinLedVermelho 13
 #define PinLedVerde 12
 #define PinBuzzer 11
@@ -12,6 +13,7 @@
 int valorLeituraSensor;
 MeuServo exaustor;
 MeuADC adc;
+DelayPersonalizado meuDelay;
 
 void setup() {
   Serial.begin(9600);
@@ -19,11 +21,11 @@ void setup() {
   pinMode(PinLedVermelho, OUTPUT);
   pinMode(PinLedVerde, OUTPUT);
   pinMode(PinBuzzer, OUTPUT);
-  pinMode(PinServo, OUTPUT); // Pode ser opcional se já setado em attach()
+  pinMode(PinServo, OUTPUT); 
 
   adc.iniciarADC();
   exaustor.attach(PinServo);
-  exaustor.write(90); // posição inicial
+  exaustor.write(90); 
 }
 
 void loop() {
@@ -37,12 +39,12 @@ void loop() {
     digitalWrite(PinLedVerde, LOW);
     digitalWrite(PinLedVermelho, HIGH);
     digitalWrite(PinBuzzer, HIGH);
-    delay(300);
+    meuDelay.delayComMensagem(3000); 
     digitalWrite(PinBuzzer, LOW);
 
     for (int pos = 60; pos <= 120; pos += 1) {
       exaustor.write(pos);
-      delay(15);
+      meuDelay.delayMs(3000); 
     }
     for (int pos = 120; pos >= 60; pos -= 1) {
       exaustor.write(pos);
@@ -56,5 +58,5 @@ void loop() {
     exaustor.write(90);
   }
 
-  delay(1000);
+  meuDelay.delayMs(1000); 
 }
