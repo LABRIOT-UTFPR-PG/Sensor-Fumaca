@@ -101,4 +101,8 @@ O código foi dividido em:
 Este projeto é de uso livre para fins educacionais.
 
 ---
+## 📜 Link Relatório
+
+[Acesse Aqui](https://docs.google.com/document/d/1A4-A4iQ7DwhCGCf_uaStVyo3oVHcT0FxglDkav4sL4Y/edit?usp=sharing)
+
 
