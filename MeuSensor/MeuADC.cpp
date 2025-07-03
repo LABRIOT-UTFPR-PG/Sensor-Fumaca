@@ -1,8 +1,7 @@
 #include "MeuADC.h"
 
 void MeuADC::iniciarADC() {
-  // Referência AVcc, resultado justificado à direita
-  ADMUX = (1 << REFS0); // REFS0 = 1 → AVcc como referência
+  ADMUX = (1 << REFS0); 
   // Habilita o ADC e define prescaler de 64 (frequência de clock: 16 MHz / 64 = 250 kHz)
   ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1);
 }
